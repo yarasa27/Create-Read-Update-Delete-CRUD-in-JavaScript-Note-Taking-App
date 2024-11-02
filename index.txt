@@ -5,6 +5,8 @@ Notekeeper - Your Everyday Notes | Effortless Note-Taking
 
 #---------- SIDEBAR ----------#
 
+alt = "Notekeeper"
+
 aria-label = Close menu
 <span class="material-symbols-rounded" aria-hidden="true">close</span>
 
