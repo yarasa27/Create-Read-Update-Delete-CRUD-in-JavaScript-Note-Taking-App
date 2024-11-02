@@ -48,7 +48,7 @@ Note title
 20 min ago
 
 aria-label = Delete note
-<span class="material-symbols-rounded" aria-hidden="true">delete</span>
+
 
 aria-label = New note
 <span class="material-symbols-rounded" aria-hidden="true">add</span>
