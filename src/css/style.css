@@ -416,6 +416,35 @@ body{
 :has(> .state-layer):active > .state-layer {
   opacity: 0.16;
 }
+.custom-sucrollbar::-webkit-scrollbar{
+  width: 8px;
+}
+.custom-sucrollbar::-webkit-scrollbar-track{
+  background-color: var(--surface-container-low);
+  border-radius: 4px;
+}
+.custom-sucrollbar::-webkit-scrollbar-thumb{
+  background-color: var(--outline-variant);
+  border-radius: 4px;
+}
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh; /* for mobile screen */
+  background-color: var(--black);
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--tr-duration-short) var(--tr-easing-linear);
+  transition-property: opacity, visibility;
+}
+.overlay.active{
+  opacity: 0.5;
+  visibility: visible;
+}
 
 
 /*-----------------------------------*\
@@ -539,6 +568,31 @@ body{
   padding-inline: var(--spacing-4) var(--spacing-6);
   border-radius: var(--radius-full);
   cursor: pointer;
+}
+.nav-item.active{
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
+  --state-layer-bg: var(--on-secondary-container);
+}
+.nav-item .text{
+  flex-grow: 1;
+}
+.nav-item .icon-btn{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--tr-duration-short) var(--tr-easing-linear);
+}
+.nav-item:where(:hover, :focus-within) .icon-btn{
+  opacity: 1;
+  visibility: visible;
+}
+.sidebar .cp-info{
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding-inline: var(--spacing-4);
+  color: var(--on-surface-variant);
+  transition: color var(--tr-duration-short) var(--tr-easing-linear);
 }
 
 /*-----------------------------------*\
