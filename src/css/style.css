@@ -690,8 +690,6 @@ body{
   }
 }
 
-
-
 /*-----------------------------------*\
   #SIDEBAR
 \*-----------------------------------*/
@@ -830,8 +828,35 @@ body{
   align-items: stretch;
   gap: var(--spacing-2);
 }
-
+.empty-notes{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: var(--spacing-4);
+  color: var(--on-surface-variant);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.empty-notes .material-symbols-rounded{
+  font-size: 6.8rem;
+  opacity: 0.25;
+  margin-block-end: var(--spacing-4);
+  margin-inline: auto;
+}
 
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
+
+/**
+ * responsive for larger than 768px screen
+*/
+
+@media (min-width: 768px){
+  /* MAIN */
+
+  .main{
+    padding-inline: var(--spacing-6);
+  }
+}

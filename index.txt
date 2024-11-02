@@ -69,6 +69,8 @@ Are you sure you want to delete "Note title"?
 Cancel
 Delete
 
+Tooltip text
+
 <span class="material-symbols-rounded" aria-hidden="true"note_stack"</span>
 
-Tooltip text
+No notes
