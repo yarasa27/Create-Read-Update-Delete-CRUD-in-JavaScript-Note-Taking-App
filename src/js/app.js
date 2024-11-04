@@ -85,6 +85,10 @@ $addNotebookBtn.addEventListener('click', showNotebookField);
 const createNotebook = function (event) {
     if(event.key === 'Enter') {
         // Store new created notebook in database
-        db.post.notebook(this.textContent || 'Untitled') // this: $navItemField
+        const /** {Object} */ notebookData = db.post.notebook(this.textContent || 'Untitled'); // this: $navItemField
+        this.parentElement.remove();
+
+        // Render navItem
+        
     }
 }

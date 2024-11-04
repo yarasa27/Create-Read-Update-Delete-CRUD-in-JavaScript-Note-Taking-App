@@ -62,9 +62,11 @@ export const db = {
                 name,
                 notes: []
             }
-            console.log(notebookData);
+            notekeeperDB.notebooks.push(notebookData);
             
             writeDB();
+
+            return notebookData;
         }
     }
 }
