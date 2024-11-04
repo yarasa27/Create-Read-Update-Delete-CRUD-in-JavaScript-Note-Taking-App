@@ -901,7 +901,7 @@ body{
   .main{
     padding-inline: var(--spacing-10);
   }
-  .menu-btn, .main, .fab{
+  .menu-btn, .main .fab{
     display: none;
   }
 }

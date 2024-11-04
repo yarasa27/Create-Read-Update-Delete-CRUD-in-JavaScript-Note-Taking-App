@@ -4,10 +4,14 @@
 
 'use strict';
 
+
 /**
  * Import
  */
 import { Tooltip } from "./Tooltip.js";
+import { activeNotebook, makeElemEditable } from "../utils.js";
+
+const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
 
 /**
  * 
@@ -36,6 +40,26 @@ export const NavItem = function (id, name) {
     // Show tooltip on edit and delete button
     const /** {Array<HTMLElement>} */ $tooltipElems = $navItem.querySelectorAll('[data-tooltip]');
     $tooltipElems.forEach($elem => Tooltip($elem));
+
+    $navItem.addEventListener('click', function() {
+        $notePanelTitle.textContent = name;
+        activeNotebook.call(this);
+    });
+
+    /**
+     * Notebook edit functionality
+     */
+    const /** {HTMLElement} */ $navItemEditBtn = $navItem.querySelector('[data-edit-btn]');
+    const /** {HTMLElement} */ $navItemField = $navItem.querySelector('[data-notebook-field]');
+
+    $navItemEditBtn.addEventListener('click', makeElemEditable.bind(null, $navItemField));
+    $navItemField.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            this.removeAttribute('contenteditable');
+
+            
+        }
+    });
 
     return $navItem;
 }
