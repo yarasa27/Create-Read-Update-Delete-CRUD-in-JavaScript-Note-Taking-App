@@ -10,6 +10,8 @@
  */
 import { Tooltip } from "./Tooltip.js";
 import { activeNotebook, makeElemEditable } from "../utils.js";
+import { db } from "../db.js";
+import { client } from "../client.js";
 
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
 
@@ -57,7 +59,11 @@ export const NavItem = function (id, name) {
         if (event.key === 'Enter') {
             this.removeAttribute('contenteditable');
 
-            
+            // Update edited data in database
+            const updatedNotebookData = db.update.notebook(id, this.textContent);
+
+            // Render updated notebook
+            client.notebook.update(id, updatedNotebookData);
         }
     });
 

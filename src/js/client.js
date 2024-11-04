@@ -44,6 +44,20 @@ export const client = {
                 
                 $sidebarList.appendChild($navItem);
             });
+        },
+
+        /**
+         * 
+         * @param {string} notebookId 
+         * @param {string} notebookData 
+         */
+        update(notebookId, notebookData) {
+            const /** {HTMLElement} */ $oldNotebook = document.querySelector(`[data-notebook="${notebookId}"]`);
+            const /** {HTMElement} */ $newNotebook = NavItem(notebookData.id, notebookData.name);
+
+            $notePanelTitle.textContent = notebookData.name;
+            $sidebarList.replaceChild($newNotebook, $oldNotebook);
+            activeNotebook.call($newNotebook);
         }
     }
 }
