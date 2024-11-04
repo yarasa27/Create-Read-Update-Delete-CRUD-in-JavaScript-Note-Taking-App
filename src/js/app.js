@@ -11,6 +11,7 @@
 import { addEventOnElements, getGreetingMsg, activeNotebook, makeElemEditable } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
 import { db } from "./db.js";
+import { client } from "./client.js";
 
 /**
  * Toggle sidebar in small screen
@@ -89,6 +90,12 @@ const createNotebook = function (event) {
         this.parentElement.remove();
 
         // Render navItem
-        
+        client.notebook.create(notebookData);
     }
 }
+
+const renderExistedNotebook = function () {
+    const /** {Array} */ notebookList = db.get.notebook();
+    console.log(notebookList);
+}
+renderExistedNotebook();
