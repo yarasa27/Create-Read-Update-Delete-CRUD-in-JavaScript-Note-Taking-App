@@ -38,12 +38,23 @@ let /** {HTMLElement \ undefined} */ $lastActiveNavItem;
 
 const activeNotebook = function () {
     $lastActiveNavItem?.classList.remove('active');
-    this.classList.add('active'); // this:
-    $lastActiveNavItem = this;
+    this.classList.add('active'); // this: navItem
+    $lastActiveNavItem = this; // this: navItem
+}
+
+/**
+ * 
+ * @param {HTMLElement} $element 
+ */
+
+const makeElemEditable = function ($element) {
+    $element.setAttribute('contenteditable', true);
+    $element.focus();
 }
 
 export {
     addEventOnElements,
     getGreetingMsg,
-    activeNotebook
+    activeNotebook,
+    makeElemEditable
 }

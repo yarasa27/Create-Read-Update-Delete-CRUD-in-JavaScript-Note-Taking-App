@@ -8,7 +8,7 @@
  * Module import
  */
 
-import { addEventOnElements, getGreetingMsg, activeNotebook } from "./utils.js";
+import { addEventOnElements, getGreetingMsg, activeNotebook, makeElemEditable } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
 
 /**
@@ -65,6 +65,24 @@ const showNotebookField = function () {
     const /** [HTMLElement] */ $navItemField = $navItem.querySelector('[data-notebook-field]');
 
     // Active new created notebook and deactive the last one.
+    activeNotebook.call($navItem);
+
+    // Make notobook field content editable and focus
+    makeElemEditable($navItemField);
+
+    // When user press 'Enter' then create notebook
+    $navItemField.addEventListener('keydown', createNotebook);
 }
 
 $addNotebookBtn.addEventListener('click', showNotebookField);
+
+/**
+ * 
+ * @param {KeyboardEvent} event 
+ */
+
+const createNotebook = function (event) {
+    if(event.key === 'Enter') {
+
+    }
+}
