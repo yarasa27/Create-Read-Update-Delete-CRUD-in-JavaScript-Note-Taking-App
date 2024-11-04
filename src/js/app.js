@@ -9,6 +9,7 @@
  */
 
 import { addEventOnElements, getGreetingMsg } from "./utils.js";
+import { Tooltip } from "./components/Tooltip.js";
 
 /**
  * Toggle sidebar in small screen
@@ -22,6 +23,13 @@ addEventOnElements($sidebarTogglers, 'click', function() {
     $sidebar.classList.toggle('active');
     $overlay.classList.toggle('active');
 });
+
+/**
+ * Initialize tooltip behavior for all DOM elements with 'data-tooltip' attribute.
+ */
+
+const  /** {Array<HTMLElement>} */ $tooltipElems = document.querySelectorAll('[data-tooltip]');
+$tooltipElems.forEach($elem => Tooltip($elem));
 
 /**
  * show greeting message on homepage
