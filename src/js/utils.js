@@ -52,9 +52,18 @@ const makeElemEditable = function ($element) {
     $element.focus();
 }
 
+/**
+ * @returns {string}
+ */
+
+const generateID = function () {
+    return new Date().getTime().toString();
+}
+
 export {
     addEventOnElements,
     getGreetingMsg,
     activeNotebook,
-    makeElemEditable
+    makeElemEditable,
+    generateID
 }
