@@ -8,7 +8,7 @@
  * Module import
  */
 
-import { addEventOnElements, getGreetingMsg } from "./utils.js";
+import { addEventOnElements, getGreetingMsg, activeNotebook } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
 
 /**
@@ -44,3 +44,27 @@ $greetElem.textContent = getGreetingMsg(currentHour);
 
 const /** "HTMLElement" */ $currentDateElem = document.querySelector('[data-current-date]'); 
 $currentDateElem.textContent = new Date().toDateString().replace(' ', ', ');
+
+/**
+ * Notebook create field
+ */
+
+const /** {HTMLElement} */ $sidebarList = document.querySelector('[data-sidebar-list]');
+const /** {HTMLElement} */ $addNotebookBtn = document.querySelector('[data-add-notebook]');
+
+const showNotebookField = function () {
+    const /** {HTMLElement} */ $navItem = document.createElement('div');
+    $navItem.classList.add('nav-item');
+
+    $navItem.innerHTML = `
+        <span class="text text-label-large" data-notebook-field></span>
+        <div class="state-layer"></div>
+    `;
+    $sidebarList.appendChild($navItem);
+    
+    const /** [HTMLElement] */ $navItemField = $navItem.querySelector('[data-notebook-field]');
+
+    // Active new created notebook and deactive the last one.
+}
+
+$addNotebookBtn.addEventListener('click', showNotebookField);
