@@ -7,7 +7,7 @@
 /**
  * Import module
  */
-import { generateID, findNotebook } from "./utils.js";
+import { generateID, findNotebook , findNotebookIndex } from "./utils.js";
 
 // DB Object 
 let /** {Object} */ notekeeperDB = {};
@@ -96,6 +96,20 @@ export const db = {
             writeDB();
 
             return notebook;
+        }
+    },
+    delete: {
+        /**
+         * @function
+         * @param {string} notebookId 
+         */
+        notebook(notebookId) {
+            readDB();
+
+            const /** {Number} */ notebookIndex = findNotebookIndex(notekeeperDB, notebookId);
+            console.log(notebookIndex);
+
+            writeDB();
         }
     }
 }

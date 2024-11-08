@@ -75,6 +75,12 @@ const /** {HTMLElement} */ $navItemDeleteBtn = $navItem.querySelector('[data-del
 $navItemDeleteBtn.addEventListener('click', function() {
     const /** {Ovject} */ modal = DeleteConfirmModal(name);
     modal.open();
+    modal.onSubmit(function(isConfirm) {
+        if(isConfirm) {
+            db.delete.notebook(id);
+        };
+        modal.close();
+    });
 });
 
 return $navItem;
