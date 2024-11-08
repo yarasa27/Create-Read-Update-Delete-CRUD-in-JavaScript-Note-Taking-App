@@ -12,6 +12,7 @@ import { Tooltip } from "./Tooltip.js";
 import { activeNotebook, makeElemEditable } from "../utils.js";
 import { db } from "../db.js";
 import { client } from "../client.js";
+import { DeleteConfirmModal } from "./Modal.js";
 
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
 
@@ -72,7 +73,8 @@ $navItemField.addEventListener('keydown', function(event) {
 */
 const /** {HTMLElement} */ $navItemDeleteBtn = $navItem.querySelector('[data-delete-btn]');
 $navItemDeleteBtn.addEventListener('click', function() {
-    const /** {Ovject} */ modal = DeleteConfirmModal()
+    const /** {Ovject} */ modal = DeleteConfirmModal(name);
+    modal.open();
 });
 
 return $navItem;
