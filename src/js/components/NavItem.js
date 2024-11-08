@@ -39,33 +39,41 @@ export const NavItem = function (id, name) {
         <div class="state-layer"></div>
     `;
 
-    // Show tooltip on edit and delete button
-    const /** {Array<HTMLElement>} */ $tooltipElems = $navItem.querySelectorAll('[data-tooltip]');
-    $tooltipElems.forEach($elem => Tooltip($elem));
+// Show tooltip on edit and delete button
+const /** {Array<HTMLElement>} */ $tooltipElems = $navItem.querySelectorAll('[data-tooltip]');
+$tooltipElems.forEach($elem => Tooltip($elem));
 
-    $navItem.addEventListener('click', function() {
-        $notePanelTitle.textContent = name;
-        activeNotebook.call(this);
-    });
+$navItem.addEventListener('click', function() {
+    $notePanelTitle.textContent = name;
+    activeNotebook.call(this);
+});
 
-    /**
-     * Notebook edit functionality
-     */
-    const /** {HTMLElement} */ $navItemEditBtn = $navItem.querySelector('[data-edit-btn]');
-    const /** {HTMLElement} */ $navItemField = $navItem.querySelector('[data-notebook-field]');
+/**
+* Notebook edit functionality
+*/
+const /** {HTMLElement} */ $navItemEditBtn = $navItem.querySelector('[data-edit-btn]');
+const /** {HTMLElement} */ $navItemField = $navItem.querySelector('[data-notebook-field]');
 
-    $navItemEditBtn.addEventListener('click', makeElemEditable.bind(null, $navItemField));
-    $navItemField.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            this.removeAttribute('contenteditable');
+$navItemEditBtn.addEventListener('click', makeElemEditable.bind(null, $navItemField));
+$navItemField.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        this.removeAttribute('contenteditable');
 
-            // Update edited data in database
-            const updatedNotebookData = db.update.notebook(id, this.textContent);
+        // Update edited data in database
+        const updatedNotebookData = db.update.notebook(id, this.textContent);
 
-            // Render updated notebook
-            client.notebook.update(id, updatedNotebookData);
-        }
-    });
+        // Render updated notebook
+        client.notebook.update(id, updatedNotebookData);
+    };
+});
 
-    return $navItem;
+/**
+* Notebook delete functionality
+*/
+const /** {HTMLElement} */ $navItemDeleteBtn = $navItem.querySelector('[data-delete-btn]');
+$navItemDeleteBtn.addEventListener('click', function() {
+    const /** {Ovject} */ modal = DeleteConfirmModal()
+});
+
+return $navItem;
 }
