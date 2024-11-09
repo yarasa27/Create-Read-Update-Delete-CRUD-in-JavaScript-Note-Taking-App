@@ -78,6 +78,7 @@ $navItemDeleteBtn.addEventListener('click', function() {
     modal.onSubmit(function(isConfirm) {
         if(isConfirm) {
             db.delete.notebook(id);
+            client.notebook.delete(id);
         };
         modal.close();
     });
