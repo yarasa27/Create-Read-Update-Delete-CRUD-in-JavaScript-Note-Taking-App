@@ -107,4 +107,11 @@ addEventOnElements($noteCreateBtns, 'click', function() {
     // Create and open a new modal 
     const /** {Object} */ modal = NoteModal();
     modal.open();
+
+    modal.onSubmit(noteObj => {
+        const /** {string} */ activeNotebookId = document.querySelector('[data-notebook].active').dataset.notebook;
+
+        console.log(noteObj);
+        console.log(activeNotebookId);
+    });
 });

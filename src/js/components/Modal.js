@@ -19,7 +19,7 @@ const NoteModal = function(title = 'Untitled', text = 'Add your note...', time =
     $modal.classList.add('modal');
 
     $modal.innerHTML = `
-        <button class="icon-btn large" aria-label="Close modal">
+        <button class="icon-btn large" aria-label="Close modal" data-close-btn>
             <span class="material-symbols-rounded" aria-hidden="true">close</span>
             <div class="state-layer"></div>
         </button>
@@ -34,14 +34,47 @@ const NoteModal = function(title = 'Untitled', text = 'Add your note...', time =
         </div>
     `;
 
+    const /** {HTMLElement} */ $submitBtn = $modal.querySelector('[data-submit-btn]');
+    $submitBtn.disabled = true;
+
     const /** {HTMLElement} */ [$titleField, $textField] = $modal.querySelectorAll('[data-note-field]');
+
+    const enableSubmit = function() {
+        $submitBtn.disabled = !$titleField.value && !$textField.value;
+    }
+    $textField.addEventListener('keyup', enableSubmit);
+    $titleField.addEventListener('keyup', enableSubmit);
 
     const open = function() {
         document.body.appendChild($modal);
         document.body.appendChild($overlay);
         $titleField.focus();
     }
-    return { open }
+
+    const close = function() {
+        document.body.removeChild($modal);
+        document.body.removeChild($overlay);
+    }
+
+    const /** {HTMLElement} */ $closeBtn = $modal.querySelector('[data-close-btn]');
+    $closeBtn.addEventListener('click', close);
+
+    /**
+     * 
+     * @param {Function} callback 
+     */
+    const onSubmit = function(callback) {
+        $submitBtn.addEventListener('click', function() {
+            const /** {Object} */ noteData = {
+                title: $titleField.value, 
+                text: $textField.value
+            }
+
+            callback(noteData);
+        });
+    }
+
+    return { open, close, onSubmit }
 }
 
 /**
