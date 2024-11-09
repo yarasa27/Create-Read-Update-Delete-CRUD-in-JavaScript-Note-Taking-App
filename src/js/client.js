@@ -73,7 +73,7 @@ export const client = {
                 $activeNavItem.click();
             } else{
                 $notePanelTitle.innerHTML = '';
-                $notePanel.innerHTML = '';
+                // $notePanel.innerHTML = '';
             }
             
             $deletedNotebook.remove();
