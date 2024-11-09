@@ -111,7 +111,8 @@ addEventOnElements($noteCreateBtns, 'click', function() {
     modal.onSubmit(noteObj => {
         const /** {string} */ activeNotebookId = document.querySelector('[data-notebook].active').dataset.notebook;
 
-        console.log(noteObj);
-        console.log(activeNotebookId);
+        const /** {Object} */ noteData = db.post.note(activeNotebookId, noteObj);
+        client.note.create(noteData);
+        modal.close();
     });
 });
