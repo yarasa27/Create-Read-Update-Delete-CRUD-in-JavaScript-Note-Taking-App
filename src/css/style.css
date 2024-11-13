@@ -633,7 +633,6 @@ body{
 .btn{
   height: 40px;
   max-width: max-content;
-  display: grid;
   align-items: center;
   border-radius: var(--radius-full);
 }
