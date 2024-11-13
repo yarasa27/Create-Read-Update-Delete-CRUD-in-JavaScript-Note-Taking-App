@@ -47,6 +47,8 @@ $tooltipElems.forEach($elem => Tooltip($elem));
 $navItem.addEventListener('click', function() {
     $notePanelTitle.textContent = name;
     activeNotebook.call(this);
+    const /** {Array} */ noteList = db.get.note(this.dataset.notebook);
+    client.note.read(noteList);
 });
 
 /**

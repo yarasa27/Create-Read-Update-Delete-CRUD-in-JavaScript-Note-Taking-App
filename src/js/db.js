@@ -110,7 +110,7 @@ export const db = {
         note(notebookId) {
             readDB();
 
-            const /** {Object} */ notebook = findNotebook(notekeeperDB, this.notebookId);
+            const /** {Object} */ notebook = findNotebook(notekeeperDB, notebookId);
             return notebook.notes;
         }
     },
