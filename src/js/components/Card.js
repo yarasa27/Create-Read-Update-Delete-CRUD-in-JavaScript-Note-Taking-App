@@ -9,6 +9,7 @@
  */
 import { Tooltip } from "./Tooltip.js";
 import { getRelativeTime } from "../utils.js";
+import { NoteModal } from "./Modal.js";
 
 /**
  * 
@@ -35,6 +36,11 @@ export const Card = function(noteData) {
     `;
 
     Tooltip($card.querySelector('[data-tooltip]'));
+
+    $card.addEventListener('click', function() {
+        const /** {Object} */ modal = NoteModal(title, text, getRelativeTime(postedOn));
+        modal.open();
+    });
 
     return $card;
 }
