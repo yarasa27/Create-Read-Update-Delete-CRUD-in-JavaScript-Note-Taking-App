@@ -126,6 +126,17 @@ export const client = {
             } else{
                 $notePanel.innerHTML = emptyNotesTemplate;
             }
+        },
+
+        /**
+         * 
+         * @param {string} noteId 
+         * @param {Object} noteData 
+         */
+        update(noteId, noteData) {
+            const /** {HTMLElement} */ $oldCard = document.querySelector(`[data-note="${noteId}"]`);
+            const /** {HTMLElement} */ $newCard = Card(noteData);
+            $notePanel.replaceChild($newCard, $oldCard)
         }
     }
 }

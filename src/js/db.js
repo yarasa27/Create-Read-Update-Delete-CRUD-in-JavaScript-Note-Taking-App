@@ -7,7 +7,7 @@
 /**
  * Import module
  */
-import { generateID, findNotebook , findNotebookIndex } from "./utils.js";
+import { generateID, findNotebook , findNotebookIndex, findNote } from "./utils.js";
 
 // DB Object 
 let /** {Object} */ notekeeperDB = {};
@@ -130,8 +130,26 @@ export const db = {
             writeDB();
 
             return notebook;
+        },
+
+        /**
+         * 
+         * @param {string} noteId 
+         * @param {Object} object
+         * @returns {Object} 
+         */
+        note(noteId, object) {
+            readDB();
+
+            const /** {Object} */ oldNote = findNote(notekeeperDB, noteId);
+            const /** {Object} */ newNote = Object.assign(oldNote, object);
+
+            writeDB();
+
+            return newNote;
         }
     },
+
     delete: {
         /**
          * @function
