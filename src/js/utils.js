@@ -1,5 +1,5 @@
 /**
- * @copyright codewithsadee 2023
+ * @copyright qaqarin27
  */
 
 'use strict';
@@ -109,6 +109,16 @@ const findNote = (db, noteId) => {
     return note;
 }
 
+/**
+ * 
+ * @param {Object} notebook 
+ * @param {string} noteId 
+ * @returns {number}
+ */
+const findNoteIndex = function(notebook, noteId) {
+    return notebook.notes.findIndex(note => note.id === noteId);
+}
+
 export {
     addEventOnElements,
     getGreetingMsg,
@@ -118,5 +128,6 @@ export {
     findNotebook,
     findNotebookIndex,
     getRelativeTime,
-    findNote
+    findNote,
+    findNoteIndex
 }

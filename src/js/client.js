@@ -1,5 +1,5 @@
 /**
- * @copyright codewithsadee 2023
+ * @copyright qaqarin27
  */
 
 'use strict';
@@ -110,7 +110,7 @@ export const client = {
 
             // Append card in notePanel
             const /** {HTMLElement} */ $card = Card(noteData);
-            $notePanel.appendChild($card);
+            $notePanel.prepend($card);
         },
         /**
          * @param {Array<Object>} noteList
@@ -137,6 +137,16 @@ export const client = {
             const /** {HTMLElement} */ $oldCard = document.querySelector(`[data-note="${noteId}"]`);
             const /** {HTMLElement} */ $newCard = Card(noteData);
             $notePanel.replaceChild($newCard, $oldCard)
+        },
+
+        /**
+         * 
+         * @param {string} noteId 
+         * @param {boolean} isNoteExists 
+         */
+        delete(noteId, isNoteExists) {
+            document.querySelector(`[data-note="${noteId}"]`).remove();
+            if (!isNoteExists) $notePanel.innerHTML = emptyNotesTemplate;
         }
     }
 }

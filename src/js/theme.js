@@ -1,5 +1,5 @@
 /**
- * @copyright codewithsadee 2023
+ * @copyright qaqarin27
  */
 
 'use strict';

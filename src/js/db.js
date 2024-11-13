@@ -1,5 +1,5 @@
 /**
- * @copyright codewithsadee 2023
+ * @copyright qaqarin27
  */
 
 'use strict';
@@ -7,7 +7,7 @@
 /**
  * Import module
  */
-import { generateID, findNotebook , findNotebookIndex, findNote } from "./utils.js";
+import { generateID, findNotebook , findNotebookIndex, findNote, findNoteIndex } from "./utils.js";
 
 // DB Object 
 let /** {Object} */ notekeeperDB = {};
@@ -132,6 +132,7 @@ export const db = {
             return notebook;
         },
 
+
         /**
          * 
          * @param {string} noteId 
@@ -162,6 +163,25 @@ export const db = {
             notekeeperDB.notebooks.splice(notebookIndex, 1);
 
             writeDB();
+        },
+
+        /**
+         * @function
+         * @param {string} notebookId 
+         * @param {string} noteId
+         * @returns {Array<Object>} 
+         */
+        note(notebookId, noteId) {
+            readDB();
+
+            const /** {Object} */ notebook = findNotebook(notekeeperDB, notebookId);
+            const /** {number} */ noteIndex = findNoteIndex(notebook, noteId);
+
+            notebook.notes.splice(noteIndex, 1);
+
+            writeDB();
+
+            return notebook.notes;
         }
     }
 }

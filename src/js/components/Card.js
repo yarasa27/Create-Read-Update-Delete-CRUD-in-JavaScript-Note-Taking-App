@@ -1,5 +1,5 @@
 /**
- * @copyright codewithsadee 2023
+ * @copyright qaqarin27
  */
 
 'use strict';
@@ -58,12 +58,16 @@ export const Card = function(noteData) {
         event.stopImmediatePropagation();
 
         const /** {Object} */ modal = DeleteConfirmModal(title);
-        modal.opebn();
+        modal.open();
 
         modal.onSubmit(function (isConfirm) {
             if(isConfirm) {
                 const /** {Array} */ existedNotes = db.delete.note(notebookId, id);
+
+                // Update the client ui to reflect note deletion
+                client.note.delete(id, existedNotes.length);
             }
+            modal.close();
         });
     });
 
