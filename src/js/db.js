@@ -101,6 +101,17 @@ export const db = {
             readDB();
 
             return notekeeperDB.notebooks;
+        },
+        /**
+         * @function
+         * @param {string} notebookId
+         * @returns {Array<Object>} 
+         */
+        note(notebookId) {
+            readDB();
+
+            const /** {Object} */ notebook = findNotebook(notekeeperDB, this.notebookId);
+            return notebook.notes;
         }
     },
     update: {

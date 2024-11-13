@@ -81,7 +81,6 @@ export const client = {
         }
     },
     note: {
-
         /**
          * 
          * @param {Object} noteData 
@@ -90,6 +89,15 @@ export const client = {
             // Append card in notePanel
             const /** {HTMLElement} */ $card = Card(noteData);
             $notePanel.appendChild($card);
+        },
+        /**
+         * @param {Array<Object>} noteList
+         */
+        read(noteList) {
+            noteList.forEach(noteData => {
+                const /** {HTMLElement} */ $card = Card(noteData);
+                $notePanel.appendChild($card);
+            });
         }
     }
 }
